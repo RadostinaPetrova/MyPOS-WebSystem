@@ -1,21 +1,35 @@
 ﻿namespace WebAppSystem.Controllers
 {
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using System.Diagnostics;
+    using WebAppSystem.Data.Models;
     using WebAppSystem.Models;
     using WebAppSystem.Models.Dashboard;
+    using WebAppSystem.Services;
 
     public class DashboardController : Controller
     {
-        public DashboardController()
-        {
+        private readonly UserManager<ApplicationUser> userMaganer;
+        private readonly ITransactionService transactionsService;
 
+        public DashboardController(UserManager<ApplicationUser> userMaganer, ITransactionService transactionsService)
+        {
+            this.userMaganer = userMaganer;
+            this.transactionsService = transactionsService;
         }
         public IActionResult Index()
         {
-            var viewModel = new IndexViewModel
+            var userId = this.userMaganer.GetUserId(this.User);
+
+            /*var receivedTransactions = this.transactionsService.ReceivedTransactions(userId);
+
+            var viewModel = new TransactionHistoryViewModel
             {
+                ReceivedTransactions = receivedTransactions,
             };
+
+            return View(viewModel);*/
             return View();
         }
 

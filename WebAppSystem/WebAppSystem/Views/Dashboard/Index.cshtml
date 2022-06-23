@@ -1,9 +1,12 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @using WebAppSystem.Data.Models
+@using WebAppSystem.Models.Dashboard
 @using WebAppSystem.Repository
 
 @inject UserManager<ApplicationUser> UserManager
 @inject IUserRepository users
+
+@model TransactionHistoryViewModel
 
 @{
     ViewData["Title"] = "Dashboard";
@@ -82,19 +85,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td class="text-center">19.06.2020</td>
-                    <td class="text-center">SenderName</td>
-                    <td class="text-center">Hi</td>
-                    <td class="text-center">10</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                </tr>
+               
             </tbody>
         </table>
     }

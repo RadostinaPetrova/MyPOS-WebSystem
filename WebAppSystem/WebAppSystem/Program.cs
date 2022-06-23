@@ -37,7 +37,7 @@ builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<ITransactionRepository, TransactionRepository>();
 
 builder.Services.AddTransient<ITransactionService, TransactionService>();
-builder.Services.AddTransient<IUserRepository, UserRepository>();
+builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IUserCreditAmountService, UserCreditAmountService>();
 
 var app = builder.Build();

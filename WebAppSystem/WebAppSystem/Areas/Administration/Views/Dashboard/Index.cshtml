@@ -1,8 +1,9 @@
 ﻿@using WebAppSystem.Models.Transactions
-@model TransactionsListViewModel
+@model IEnumerable<TransactionViewModel>
 
 @{
     ViewData["Title"] = "Dashboard";
+    int i = 1;
 }
 
 
@@ -19,12 +20,10 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var transaction in Model.Transactions)
+        @foreach (var transaction in Model)
         {
-            int i = 0;
-            i++;
             <tr>
-            <th scope="row">@i</th>
+            <th scope="row">@(i++)</th>
             <td class="text-center">@transaction.Date</td>
             <td class="text-center">@transaction.SenderName</td>
             <td class="text-center">@transaction.RecipientName</td>

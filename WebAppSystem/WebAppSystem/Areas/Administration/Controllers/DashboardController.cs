@@ -8,25 +8,25 @@
     public class DashboardController : AdministrationController
     {
         private readonly ITransactionService transactionsService;
-        public DashboardController(ITransactionService transactionsService)
+        private readonly IUserService usersService;
+        public DashboardController(ITransactionService transactionsService, IUserService usersService)
         {
             this.transactionsService = transactionsService;
+            this.usersService = usersService;
         }
 
         public IActionResult Index()
         {
-            var viewModel = new TransactionsListViewModel
-            {
-                Transactions = this.transactionsService.GetAll()
-            };
+            var viewModel = this.transactionsService.GetAll();
 
             return this.View(viewModel);
         }
 
         public IActionResult AllUsers()
         {
+            var viewModel = this.usersService.GetAllUsers();
 
-            return this.View();
+            return this.View(viewModel);
         }
     }
 }
