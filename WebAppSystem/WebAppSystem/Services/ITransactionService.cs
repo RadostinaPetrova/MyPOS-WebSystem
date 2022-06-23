@@ -1,7 +1,7 @@
-﻿using WebAppSystem.Models.Transactions;
-
-namespace WebAppSystem.Services
+﻿namespace WebAppSystem.Services
 {
+    using WebAppSystem.Models.Transactions;
+
     public interface ITransactionService
     {
         void CreateTransaction(TransactionInputModel transaction, string userId);
@@ -10,6 +10,6 @@ namespace WebAppSystem.Services
 
         IEnumerable<TransactionViewModel> ReceivedTransactions(string userId);
 
-        IEnumerable<TransactionViewModel> AllTransactions();
+        IEnumerable<TransactionViewModel> GetAll();
     }
 }

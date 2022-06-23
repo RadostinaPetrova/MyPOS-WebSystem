@@ -1,0 +1,35 @@
+﻿@using WebAppSystem.Models.Dashboard
+
+@model IEnumerable<UserViewModel>
+
+@{
+    ViewData["Title"] = "All Users";
+}
+
+<h1 class="text-center">Information</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th class="text-center" scope="col">User</th>
+            <th class="text-center" scope="col">Credit Amount</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+        <tr>
+            <th scope="row">1</th>
+            <td class="text-center">@user.Email</td>
+            <td class="text-center">@user.CreditAmount</td>
+        </tr>           
+        }
+        <tr>
+            <th scope="row">2</th>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+        </tr>
+    </tbody>
+</table>

@@ -1,22 +1,32 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using WebAppSystem.Services;
-
-namespace WebAppSystem.Areas.Administration.Controllers
+﻿namespace WebAppSystem.Areas.Administration.Controllers
 {
+    using Microsoft.AspNetCore.Mvc;
+    using WebAppSystem.Services;
+    using WebAppSystem.Models.Transactions;
+
     [Area("Administration")]
     public class DashboardController : AdministrationController
     {
-        private readonly ITransactionService transactions;
-        public DashboardController(ITransactionService transactions)
+        private readonly ITransactionService transactionsService;
+        public DashboardController(ITransactionService transactionsService)
         {
-            this.transactions = transactions;
+            this.transactionsService = transactionsService;
         }
 
         public IActionResult Index()
         {
-            var transactions = this.transactions.AllTransactions();
+            var viewModel = new TransactionsListViewModel
+            {
+                Transactions = this.transactionsService.GetAll()
+            };
 
-            return View(transactions);
+            return this.View(viewModel);
+        }
+
+        public IActionResult AllUsers()
+        {
+
+            return this.View();
         }
     }
 }

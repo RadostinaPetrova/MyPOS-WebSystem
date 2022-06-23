@@ -1,5 +1,5 @@
 ﻿@using WebAppSystem.Models.Transactions
-@model IEnumerable<TransactionViewModel>
+@model TransactionsListViewModel
 
 @{
     ViewData["Title"] = "Dashboard";
@@ -19,7 +19,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var transaction in Model)
+        @foreach (var transaction in Model.Transactions)
         {
             int i = 0;
             i++;

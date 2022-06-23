@@ -37,7 +37,7 @@
             this.transactionsRepository.SaveChanges();
         }
 
-        public IEnumerable<TransactionViewModel> AllTransactions()
+        public IEnumerable<TransactionViewModel> GetAll()
         {
             var transactions = this.transactionsRepository.GetAllTransactions()
                 .Select(t => new TransactionViewModel
