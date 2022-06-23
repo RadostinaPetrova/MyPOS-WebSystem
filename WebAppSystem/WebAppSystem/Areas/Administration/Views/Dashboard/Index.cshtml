@@ -1,0 +1,36 @@
+﻿@using WebAppSystem.Models.Transactions
+@model IEnumerable<TransactionViewModel>
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+
+<h2 class="text-center"> Transactions history:</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th class="text-center" scope="col">Date</th>
+            <th class="text-center" scope="col">Sender</th>
+            <th class="text-center" scope="col">Recepient</th>
+            <th class="text-center" scope="col">Message</th>
+            <th class="text-center" scope="col">Credit Amount</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var transaction in Model)
+        {
+            int i = 0;
+            i++;
+            <tr>
+            <th scope="row">@i</th>
+            <td class="text-center">@transaction.Date</td>
+            <td class="text-center">@transaction.SenderName</td>
+            <td class="text-center">@transaction.RecipientName</td>
+            <td class="text-center">@transaction.Message</td>
+            <td class="text-center">@transaction.CreditAmount</td>
+        </tr>
+        }
+    </tbody>
+</table>

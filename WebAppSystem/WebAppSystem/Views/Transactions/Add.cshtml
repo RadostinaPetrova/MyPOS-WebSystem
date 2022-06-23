@@ -1,0 +1,31 @@
+﻿@model TransactionInputModel
+
+@{
+    this.ViewData["Title"] = "Send Gift";
+}
+
+<form method="post" class="col-md-6 offset-md-3">
+    <h1 class="text-center text-dark">@this.ViewData["Title"]</h1>
+    <h4 class="text-center text-dark">Fill the form:</h4>
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="CreditAmount" class="form-label">Fill the amount of credits</label>
+        <input asp-for="CreditAmount" class="form-control" placeholder="Credit amount">
+        <span asp-validation-for="CreditAmount" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="RecipientPhoneNumber" class="form-label">Fill the recipient’s mobile number</label>
+        <input asp-for="RecipientPhoneNumber" class="form-control" placeholder="+359xxxxxxxxx">
+        <span asp-validation-for="RecipientPhoneNumber" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Message" class="form-label">Enter a message or write a wish</label>
+        <textarea asp-for="Message" class="form-control" rows="5" placeholder="Message/Wish"></textarea>
+        <span asp-validation-for="Message" class="text-danger"></span>
+    </div>
+    <input type="submit" class="btn btn-primary" value="Send" />
+</form>
+
+<hr />
+<a class="btn btn-secondary" asp-controller="Dashboard" asp-action="">Go back</a>

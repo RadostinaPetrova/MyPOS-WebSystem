@@ -12,13 +12,15 @@
         [Required]
         public int CreditAmount { get; set; }
 
+        //[Required]
         public string SenderId { get; set; }
 
         public virtual ApplicationUser Sender { get; set; }
 
-        public string RecepientId { get; set; }
+        //[Required]
+        public string RecipientId { get; set; }
 
-        public virtual ApplicationUser Recepient { get; set; }
+        public virtual ApplicationUser Recipient { get; set; }
 
         [MaxLength(MessageMaxLength)]
         public string Message { get; set; }

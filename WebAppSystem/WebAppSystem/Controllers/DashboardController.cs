@@ -1,20 +1,21 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
-using WebAppSystem.Models;
-
-namespace WebAppSystem.Controllers
+﻿namespace WebAppSystem.Controllers
 {
-    public class HomeController : Controller
+    using Microsoft.AspNetCore.Mvc;
+    using System.Diagnostics;
+    using WebAppSystem.Models;
+    using WebAppSystem.Models.Dashboard;
+
+    public class DashboardController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        public DashboardController()
         {
-            _logger = logger;
-        }
 
+        }
         public IActionResult Index()
         {
+            var viewModel = new IndexViewModel
+            {
+            };
             return View();
         }
 
