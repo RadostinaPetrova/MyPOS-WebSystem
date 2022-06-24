@@ -2,7 +2,6 @@
 {
     using Microsoft.AspNetCore.Mvc;
     using WebAppSystem.Services;
-    using WebAppSystem.Models.Transactions;
 
     [Area("Administration")]
     public class DashboardController : AdministrationController
