@@ -45,55 +45,62 @@
 
         <h2 class="text-center"> Transactions history:</h2>
 
-
+        @if (Model.SendTransactions.Any() && Model.ReceivedTransactions.Any())
+        {
         <h4 class="text-center">Transactions you have made</h4>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th class="text-center" scope="col">Date</th>
-                    <th class="text-center" scope="col">Recepient</th>
-                    <th class="text-center" scope="col">Message</th>
-                    <th class="text-center" scope="col">Credit Amount</th>
-                </tr>
-            </thead>
-            <tbody>
-            @foreach (var transaction in Model.SendTransactions)
-                {
-                <tr>
-                    <th scope="row">@(i++)</th>
-                    <td class="text-center">@transaction.Date</td>
-                    <td class="text-center">@transaction.RecipientName</td>
-                    <td class="text-center">@transaction.Message</td>
-                    <td class="text-center">@transaction.CreditAmount</td>
-                </tr>
-                }
-            </tbody>
-        </table>
-
-        <h4 class="text-center">Transactions you have received</h4>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th class="text-center" scope="col">Date</th>
-                    <th class="text-center" scope="col">Sender</th>
-                    <th class="text-center" scope="col">Message</th>
-                    <th class="text-center" scope="col">Credit Amount</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var transaction in Model.ReceivedTransactions)
-                {
+            <table class="table table-striped">
+                <thead>
                     <tr>
-                        <th scope="row">#</th>
-                        <td class="text-center">@transaction.Date</td>
-                        <td class="text-center">@transaction.SenderName</td>
-                        <td class="text-center">@transaction.Message</td>
-                        <td class="text-center">@transaction.CreditAmount</td>
+                        <th scope="col">#</th>
+                        <th class="text-center" scope="col">Date</th>
+                        <th class="text-center" scope="col">Recepient</th>
+                        <th class="text-center" scope="col">Message</th>
+                        <th class="text-center" scope="col">Credit Amount</th>
                     </tr>
-                }
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach (var transaction in Model.SendTransactions)
+                    {
+                        <tr>
+                            <th scope="row">@(i++)</th>
+                            <td class="text-center">@transaction.Date</td>
+                            <td class="text-center">@transaction.RecipientName</td>
+                            <td class="text-center">@transaction.Message</td>
+                            <td class="text-center">@transaction.CreditAmount</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <h4 class="text-center">Transactions you have received</h4>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th class="text-center" scope="col">Date</th>
+                        <th class="text-center" scope="col">Sender</th>
+                        <th class="text-center" scope="col">Message</th>
+                        <th class="text-center" scope="col">Credit Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var transaction in Model.ReceivedTransactions)
+                    {
+                        <tr>
+                            <th scope="row">#</th>
+                            <td class="text-center">@transaction.Date</td>
+                            <td class="text-center">@transaction.SenderName</td>
+                            <td class="text-center">@transaction.Message</td>
+                            <td class="text-center">@transaction.CreditAmount</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <h4 class="text-center">Currently you don't have any transaction history.</h4>
+        }
+
     }
 }
