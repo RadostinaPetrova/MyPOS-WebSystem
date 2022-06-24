@@ -4,7 +4,6 @@
 
     public interface ITransactionRepository
     {
-        // Is AddTransaction better name?
         void CreateTransaction(Transaction transaction);
 
         void SaveChanges();

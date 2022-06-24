@@ -12,7 +12,6 @@
             this.dbContext = dbContext;
         }
 
-        // Is AddTransaction better name?
         public void CreateTransaction(Transaction transaction)
         {
             this.dbContext.Add(transaction);
@@ -25,7 +24,6 @@
 
         public Transaction GetTransactionById(int transactionId)
         {
-            // FirstOrDefault or Find?
             return this.dbContext.Transactions.FirstOrDefault(t => t.Id == transactionId);
         }
 

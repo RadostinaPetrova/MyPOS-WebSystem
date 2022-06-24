@@ -5,5 +5,7 @@ namespace WebAppSystem.Services
     public interface IUserService
     {
         IEnumerable<UserViewModel> GetAllUsers();
+
+        string GetUserId(string phoneNumber);
     }
 }

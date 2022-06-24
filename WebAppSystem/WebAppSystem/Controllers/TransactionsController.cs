@@ -12,12 +12,14 @@
     {
         private readonly UserManager<ApplicationUser> userMaganer;
         private readonly ITransactionService transactionsService;
+        private readonly IUserService usersService;
         private readonly IUserCreditAmountService userCreditAmountService;
 
-        public TransactionsController(UserManager<ApplicationUser> userManager, ITransactionService transactionsService, IUserCreditAmountService userCreditAmountService)
+        public TransactionsController(UserManager<ApplicationUser> userManager, ITransactionService transactionsService, IUserService usersService, IUserCreditAmountService userCreditAmountService)
         {
             this.userMaganer = userManager;
             this.transactionsService = transactionsService;
+            this.usersService = usersService;
             this.userCreditAmountService = userCreditAmountService;
         }
 
@@ -38,7 +40,7 @@
 
             var userId = this.userMaganer.GetUserId(this.User);
 
-            //var recipient = this.usersRepository.GetUserByPhoneNumber(input.RecipientPhoneNumber);
+            var recipientId = this.usersService.GetUserId(input.RecipientPhoneNumber);
 
             if (input.CreditAmount <= 0)
             {
@@ -50,7 +52,13 @@
             {
                 this.ModelState.AddModelError(string.Empty, "You can't send more credits than you have.");
                 return View(input);
-            }            
+            }
+            
+            if(userId == recipientId)
+            {
+                this.ModelState.AddModelError(string.Empty, "You can't send credits to yourself.");
+                return View(input);
+            }
 
             try
             {

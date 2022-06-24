@@ -53,7 +53,7 @@
             return transactions;
         }
 
-        public IEnumerable<TransactionViewModel> ReceivedTransactions(string userId)
+        public ICollection<TransactionViewModel> ReceivedTransactions(string userId)
         {
             /* return this.transactionsRepository.GetAllTransactions().Where(t => t.RecipientId == userId)
                   .OrderByDescending(t => t.Date)
@@ -67,7 +67,7 @@
             throw new NotImplementedException();
         }
 
-        public IEnumerable<TransactionViewModel> SentTransactions(string userId)
+        public ICollection<TransactionViewModel> SentTransactions(string userId)
         {
             /*return this.transactionsRepository.GetAllTransactions().Where(t => t.SenderId == userId)
                   .OrderByDescending(t => t.Date)

@@ -5,16 +5,16 @@ namespace WebAppSystem.Services
 {
     public class UserService : IUserService
     {
-        private readonly IUserRepository users;
+        private readonly IUserRepository usersRepository;
 
-        public UserService(IUserRepository users)
+        public UserService(IUserRepository usersRepository)
         {
-            this.users = users;
+            this.usersRepository = usersRepository;
         }
 
         public IEnumerable<UserViewModel> GetAllUsers()
         {
-            var users = this.users.GetAllUsers().
+            var users = this.usersRepository.GetAllUsers().
                 Where(u => !u.Email.StartsWith("admin"))
                 .Select(u => new UserViewModel
                 {
@@ -24,5 +24,13 @@ namespace WebAppSystem.Services
 
             return users;
         }
+
+        public string GetUserId(string phoneNumber)
+        {
+            var userId = this.usersRepository.GetUserByPhoneNumber(phoneNumber).Id;
+
+            return userId;
+        }
+
     }
 }

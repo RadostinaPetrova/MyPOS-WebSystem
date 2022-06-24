@@ -6,9 +6,9 @@
     {
         void CreateTransaction(TransactionInputModel transaction, string userId);
 
-        IEnumerable<TransactionViewModel> SentTransactions(string userId);
+        ICollection<TransactionViewModel> SentTransactions(string userId);
 
-        IEnumerable<TransactionViewModel> ReceivedTransactions(string userId);
+        ICollection<TransactionViewModel> ReceivedTransactions(string userId);
 
         IEnumerable<TransactionViewModel> GetAll();
     }
