@@ -1,5 +1,6 @@
 ﻿namespace WebAppSystem.Services
 {
+    using Microsoft.AspNetCore.Identity;
     using System.Collections.Generic;
     using WebAppSystem.Data.Models;
     using WebAppSystem.Models.Transactions;
@@ -9,11 +10,13 @@
     {
         private readonly ITransactionRepository transactionsRepository;
         private readonly IUserRepository usersRepository;
+        private readonly UserManager<ApplicationUser> userMaganer;
 
-        public TransactionService(ITransactionRepository transactionsRepository, IUserRepository usersRepository)
+        public TransactionService(ITransactionRepository transactionsRepository, IUserRepository usersRepository, UserManager<ApplicationUser> userMaganer)
         {
             this.transactionsRepository = transactionsRepository;
             this.usersRepository = usersRepository;
+            this.userMaganer = userMaganer;
         }
 
         public void CreateTransaction(TransactionInputModel input, string userId)
@@ -43,10 +46,10 @@
                 .Select(t => new TransactionViewModel
                 {
                     Date = t.Date,
-                    SenderName = t.Sender.UserName,
-                    RecipientName = t.Recipient.UserName,
                     Message = t.Message,
                     CreditAmount = t.CreditAmount,
+                    SenderName = userMaganer.Users.First(u => u.Id == t.SenderId).UserName,
+                    RecipientName = userMaganer.Users.First(u => u.Id == t.RecipientId).UserName
                 })
                 .ToList();
 

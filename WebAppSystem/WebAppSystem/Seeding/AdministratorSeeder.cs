@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Identity;
-using WebAppSystem.Data;
-using WebAppSystem.Data.Models;
-
-namespace WebAppSystem.Seeding
+﻿namespace WebAppSystem.Seeding
 {
+    using Microsoft.AspNetCore.Identity;
+    using WebAppSystem.Data;
+    using WebAppSystem.Data.Models;
+
     public class AdministratorSeeder : ISeeder
     {
         public async Task SeedAsync(ApplicationDbContext dbContext, IServiceProvider serviceProvider)
@@ -15,10 +15,6 @@ namespace WebAppSystem.Seeding
             if (!userExists)
             {
                 var roleManager = serviceProvider.GetService<RoleManager<ApplicationRole>>();
-
-                //var usersService = (IUsersService)serviceProvider
-                    //.GetService(typeof(IUsersService));
-
 
                 var admin = new ApplicationUser
                 {

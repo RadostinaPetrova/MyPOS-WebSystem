@@ -1,7 +1,7 @@
-﻿using WebAppSystem.Models.Dashboard;
-
-namespace WebAppSystem.Services
+﻿namespace WebAppSystem.Services
 {
+    using WebAppSystem.Models.Dashboard;
+
     public interface IUserService
     {
         IEnumerable<UserViewModel> GetAllUsers();

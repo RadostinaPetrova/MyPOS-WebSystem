@@ -12,12 +12,12 @@
         [Required]
         public int CreditAmount { get; set; }
 
-        //[Required]
+        [Required]
         public string SenderId { get; set; }
 
         public virtual ApplicationUser Sender { get; set; }
 
-        //[Required]
+        [Required]
         public string RecipientId { get; set; }
 
         public virtual ApplicationUser Recipient { get; set; }

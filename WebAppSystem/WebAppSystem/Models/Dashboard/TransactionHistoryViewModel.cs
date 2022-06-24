@@ -1,7 +1,7 @@
-﻿using WebAppSystem.Models.Transactions;
-
-namespace WebAppSystem.Models.Dashboard
+﻿namespace WebAppSystem.Models.Dashboard
 {
+    using WebAppSystem.Models.Transactions;
+
     public class TransactionHistoryViewModel
     {
         public IEnumerable<TransactionViewModel> SendTransactions { get; set; }

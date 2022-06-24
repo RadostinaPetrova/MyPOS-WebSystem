@@ -1,8 +1,8 @@
-﻿using WebAppSystem.Models.Dashboard;
-using WebAppSystem.Repository;
-
-namespace WebAppSystem.Services
+﻿namespace WebAppSystem.Services
 {
+    using WebAppSystem.Models.Dashboard;
+    using WebAppSystem.Repository;
+
     public class UserService : IUserService
     {
         private readonly IUserRepository usersRepository;

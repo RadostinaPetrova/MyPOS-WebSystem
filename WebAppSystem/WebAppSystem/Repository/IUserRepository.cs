@@ -1,7 +1,7 @@
-﻿using WebAppSystem.Data.Models;
-
-namespace WebAppSystem.Repository
+﻿namespace WebAppSystem.Repository
 {
+    using WebAppSystem.Data.Models;
+
     public interface IUserRepository
     {
         ApplicationUser GetUserByPhoneNumber(string phoneNumber);
