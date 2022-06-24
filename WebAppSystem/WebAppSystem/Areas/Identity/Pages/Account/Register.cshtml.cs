@@ -1,25 +1,18 @@
 ﻿#nullable disable
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Text.Encodings.Web;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI.Services;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.WebUtilities;
-using Microsoft.Extensions.Logging;
-using WebAppSystem.Data.Models;
-
 namespace WebAppSystem.Areas.Identity.Pages.Account
 {
+    using Microsoft.AspNetCore.Authentication;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Identity.UI.Services;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.RazorPages;
+    using Microsoft.AspNetCore.WebUtilities;
+    using System.ComponentModel.DataAnnotations;
+    using System.Text;
+    using System.Text.Encodings.Web;
+    using WebAppSystem.Data.Models;
+
     public class RegisterModel : PageModel
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
@@ -61,7 +54,7 @@ namespace WebAppSystem.Areas.Identity.Pages.Account
 
             [Required]
             [Display(Name = "Phone number")]
-            [RegularExpression(@"(\+359)[0-9]{9}\b", ErrorMessage = "The mobile number is not valid. Valid number example +359000000000")]
+            [RegularExpression(@"(\+359)[0-9]{9}\b", ErrorMessage = "The mobile number is not valid. Valid number is +359xxxxxxxxx. Instead of x use numbers from 0-9")]
             public string PhoneNumber { get; set; }
 
             public int CreditAmount { get; set; }
@@ -89,7 +82,8 @@ namespace WebAppSystem.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser {
+                var user = new ApplicationUser
+                {
                     UserName = Input.Email,
                     Email = Input.Email,
                     PhoneNumber = Input.PhoneNumber
