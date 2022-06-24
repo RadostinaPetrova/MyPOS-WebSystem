@@ -40,7 +40,6 @@
 
             var userId = this.userMaganer.GetUserId(this.User);
 
-            var recipientId = this.usersService.GetUserId(input.RecipientPhoneNumber);
 
             if (input.CreditAmount <= 0)
             {
@@ -53,10 +52,20 @@
                 this.ModelState.AddModelError(string.Empty, "You can't send more credits than you have.");
                 return View(input);
             }
-            
-            if(userId == recipientId)
+
+            try
             {
-                this.ModelState.AddModelError(string.Empty, "You can't send credits to yourself.");
+                var recipientId = this.usersService.GetUserId(input.RecipientPhoneNumber);
+
+                if (userId == recipientId)
+                {
+                    this.ModelState.AddModelError(string.Empty, "You can't send credits to yourself.");
+                    return View(input);
+                }
+            }
+            catch (Exception ex)
+            {
+                this.ModelState.AddModelError(string.Empty, "There is no registered user with this phone number.");
                 return View(input);
             }
 
@@ -70,7 +79,7 @@
                 return this.View(input);
             }
 
-            return RedirectToAction("Index", "Dashboard");
+            return RedirectToAction("AuthorizedIndex", "Dashboard");
         }
     }
 }

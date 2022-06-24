@@ -1,92 +1,9 @@
-﻿@using Microsoft.AspNetCore.Identity
-@using WebAppSystem.Data.Models
-@using WebAppSystem.Models.Dashboard
-@using WebAppSystem.Repository
-
-@inject UserManager<ApplicationUser> UserManager
-@inject IUserRepository users
-
-@model TransactionHistoryViewModel
-
-@{
+﻿@{
     ViewData["Title"] = "Dashboard";
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    @if (!User.Identity.IsAuthenticated)
-    {
-        <h3>To our system for sending of gifts in the form of online credits!</h3>
-        <img src="GiftsImg.jpg" alt="Gifts image" width="1020" height="755">
-    }
+    <h3>To our system for sending of gifts in the form of online credits!</h3>
+    <img src="GiftsImg.jpg" alt="Gifts image" width="1020" height="755">
 </div>
-
-@{
-    var userCredits = string.Empty;
-
-    if (User.Identity.IsAuthenticated && !User.IsInRole(GlobalConstants.AdministratorRoleName))
-    {
-        userCredits = this.users.GetUserById(UserManager.GetUserId(User)).CreditAmount.ToString();
-        <h1 class="text-center">You have @userCredits credits!</h1>
-
-        <br />
-
-        <hr />
-
-        <div class="container text-center">
-            <h2>Send credits to another user</h2>
-            <a class="btn btn-primary btn-lg" asp-controller="Transactions" asp-action="Add">Send Credits</a>
-        </div>
-
-        <hr />
-
-        <br />
-
-        <h2 class="text-center"> Transactions history:</h2>
-
-
-        <h4 class="text-center">Transactions you have made</h4>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th class="text-center" scope="col">Date</th>
-                    <th class="text-center" scope="col">Recepient</th>
-                    <th class="text-center" scope="col">Message</th>
-                    <th class="text-center" scope="col">Credit Amount</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td class="text-center">19.06.2020</td>
-                    <td class="text-center">RecepientName</td>
-                    <td class="text-center">Hi</td>
-                    <td class="text-center">10</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                </tr>
-            </tbody>
-        </table>
-
-        <h4 class="text-center">Transactions you have received</h4>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th class="text-center" scope="col">Date</th>
-                    <th class="text-center" scope="col">Sender</th>
-                    <th class="text-center" scope="col">Message</th>
-                    <th class="text-center" scope="col">Credit Amount</th>
-                </tr>
-            </thead>
-            <tbody>
-               
-            </tbody>
-        </table>
-    }
-}

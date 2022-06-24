@@ -55,33 +55,5 @@
 
             return transactions;
         }
-
-        public ICollection<TransactionViewModel> ReceivedTransactions(string userId)
-        {
-            /* return this.transactionsRepository.GetAllTransactions().Where(t => t.RecipientId == userId)
-                  .OrderByDescending(t => t.Date)
-                  .Select(t => new TransactionViewModel
-                  {
-                      SenderName = t.Sender.UserName,
-                      Message = t.Message,
-                      CreditAmount = t.CreditAmount
-                  })
-                  .ToList();*/
-            throw new NotImplementedException();
-        }
-
-        public ICollection<TransactionViewModel> SentTransactions(string userId)
-        {
-            /*return this.transactionsRepository.GetAllTransactions().Where(t => t.SenderId == userId)
-                  .OrderByDescending(t => t.Date)
-                  .Select(t => new TransactionViewModel
-                  {
-                      RecipientName = t.Recipient.UserName,
-                      Message = t.Message,
-                      CreditAmount = t.CreditAmount
-                  })
-                  .ToList();*/
-            throw new NotImplementedException();
-        }
     }
 }
